@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/ChrisClark13/FB-BMG-Browser#readme",
   "dependencies": {
+    "jquery": "^3.6.0",
     "mithril": "^2.0.4",
     "sanitize-filename": "^1.6.3"
   },

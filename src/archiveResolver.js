@@ -1,4 +1,5 @@
 const sanitize = require('sanitize-filename');
+const $ = require('jquery');
 
 const threadIndex = require('./indexes/threadIndex.json');
 const postIndex = require('./indexes/postIndex.json');
@@ -22,11 +23,26 @@ function getUserAvatarLocationByName(name) {
         }
     }
 
-    return '';
+    return '.\\imageMissing.png';
+}
+
+function $getXHRThreadPageByID(threadID, pageNum) {
+    return $.get(prependPath(`${threadIndex[threadID].path}\\page-${pageNum}.html`))
+        .then(data => {
+            console.log($('<div></div>').append($.parseHTML(data)));
+            let $body = $('<div></div>').append($.parseHTML(data)).find('.p-body-inner');
+            $body.find('.notices').remove();
+            return $body;
+        });
+}
+
+function getPostByID(postID) {
+
 }
 
 module.exports = {
     prependPath,
     getUserAvatarLocationByID,
     getUserAvatarLocationByName,
+    $getXHRThreadPageByID
 }
