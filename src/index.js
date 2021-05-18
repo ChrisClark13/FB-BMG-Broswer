@@ -4,7 +4,7 @@ const $ = require("jquery");
 
 m.render(document.body,
     m('div', [
-        m('img', {src: archive.getUserAvatarLocationByName("Litwick")})
+        m('img', {src: archive.getUserAvatarLocationByName("Liltwick")})
     ])
 );
 
