@@ -70,10 +70,10 @@ function $getXHRThreadPageByID(threadID, pageNum) {
                     //TODO: Do some fancy routing to fix these too
                     let match;
                     if (href.match(/\?threads\/.+?\.\d+\/|post-\d+$/)) {
-                        $a.attr('href', href.replace('index.php?', "#!/"));
+                        $a.attr('href', href.replace('index.php?', "FB-BMG-Browser/#!/"));
                     } else if ((match = href.match(/post&id=(\d+)/)) != null) {
                         //console.log(match);
-                        $a.attr('href', `#!/post/${match[1]}`);
+                        $a.attr('href', `FB-BMG-Browser/#!/post/${match[1]}`);
                     } else {
                         $a.removeAttr('href');
                     }
