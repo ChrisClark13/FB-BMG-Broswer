@@ -1,0 +1,39 @@
+{
+  "name": "FB-BMG-Browser",
+  "version": "1.0.0",
+  "description": "A combination archive and browser for the now defunct BMG branch of Fizzy Bubbles",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=production --node-env=production",
+    "serve": "webpack serve",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChrisClark13/FB-BMG-Browser.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChrisClark13/FB-BMG-Browser/issues"
+  },
+  "homepage": "https://github.com/ChrisClark13/FB-BMG-Browser#readme",
+  "dependencies": {
+    "mithril": "^2.0.4",
+    "sanitize-filename": "^1.6.3"
+  },
+  "devDependencies": {
+    "@webpack-cli/generators": "^2.1.0",
+    "css-loader": "^5.2.4",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "prettier": "^2.3.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
