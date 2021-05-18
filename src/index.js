@@ -7,7 +7,7 @@ let postID = null;
 let errorMessage = "";
 
 const ThreadResolver = {
-    onmatch: function(args) {
+    onmatch: function(args, requestedPath) {
         return new Promise((resolve, reject) => {
             let threadID = 0;
             let pageNum = 1;
@@ -33,7 +33,11 @@ const ThreadResolver = {
                 }
             }
 
-            console.log(`Loading ${threadID}\\${pageNum}` + (postID == null ? '' : ` Pointing at postID ${postID}`));
+            if (requestedPath.includes("#post")) {
+                postID = requestedPath.match(/#post-(\d+)/)[1];
+            }
+
+            console.log(`Loading Path ${requestedPath}\nLoading thread/page: ${threadID}/${pageNum}` + (postID == null ? '' : ` Pointing at postID ${postID}`));
 
             archive.$getXHRThreadPageByID(threadID, pageNum)
                 .then( $body => {
