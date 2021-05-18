@@ -3,7 +3,7 @@ const sanitize = require('sanitize-filename');
 const threadIndex = require('./indexes/threadIndex.json');
 const postIndex = require('./indexes/postIndex.json');
 const imageIndex = require('./indexes/imageIndex.json');
-const PATH_HEADER = '..\\bmgArchive\\';
+const PATH_HEADER = '.\\bmgArchive\\';
 
 function prependPath(path) {
     return `${PATH_HEADER}${path}`
