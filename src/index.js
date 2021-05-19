@@ -3,16 +3,17 @@ const archive = require('./archiveResolver.js');
 const $ = require("jquery");
 
 let $threadBody = null;
+let threadID = 0;
+let pageNum = 1;
 let postID = null;
 let errorMessage = "";
 
 const ThreadResolver = {
     onmatch: function(args, requestedPath) {
         return new Promise((resolve, reject) => {
-            let threadID = 0;
-            let pageNum = 1;
-
             $threadBody = null;
+            threadID = 0;
+            pageNum = 1;
             postID = null;
 
             if (args.threadID) {
@@ -56,16 +57,23 @@ const ThreadResolver = {
     render: function(vnode) {
         //console.log(vnode);
         let content = ($threadBody != null) ? m.trust($threadBody.html()) : m('div', `Something went wrong, check the console...\nERROR\n${errorMessage}`);
+
+        if ($threadBody != null) {
+            document.title = `FB BMG Broswer - ${$threadBody.find(".p-title-value").text()} - Page ${pageNum}` + (postID == null ? "" : ` Post ${$threadBody.find(`header li a[href$="${postID}"]`).text().trim()}`);
+        } else {
+            document.title = 'FB BMG Broswer - ERROR'
+        }
+
         return (postID == null) ? 
-            m('div', content) :
-            m('div', {
+            m('div.archivedContent', content) :
+            m('div.archivedContent', {
                 oncreate: () => document.getElementById(`post-${postID}`).scrollIntoView(true),
                 onupdate: () => document.getElementById(`post-${postID}`).scrollIntoView(true) 
             }, content);
     }
 }
 
-m.route(document.body, "/threads/281788/1",
+m.route(document.getElementById("dynamicContent"), "/threads/281788/1",
     {
         "/post/:postID": ThreadResolver,
         "/threads/:threadID": ThreadResolver,
