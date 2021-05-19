@@ -58,6 +58,7 @@ function $getXHRThreadPageByID(threadID, pageNum) {
             $body.find('li').has('a[data-xf-init="share-tooltip"').remove();
             $body.find('div.block-outer-opposite').remove();
             $body.find('img[src^="\/styles"]').remove();
+            $body.find('form.js-quickReply').remove();
 
             //Fix links
             $body.find('a').each((i, e) => {
